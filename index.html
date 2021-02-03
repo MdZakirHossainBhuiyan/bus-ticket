@@ -42,22 +42,22 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">From</label>
-                        <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                    <input id="journey-from" class="inp-style" type="text" name="" placeholder="Dhaka" value="">
                 </div>
                 <div class="input-group">
                     <label" for="">To</label>
-                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                    <input id="journey-to" class="inp-style" type="text" name="" placeholder="Chittagone" value="">
                 </div>
             </div>
 
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                        <input class="inp-style" type="date" name="">
+                    <input id="departure-date" class="inp-style" type="date" name="" value="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
-                    <input class="inp-style" type="date" name="">
+                    <input id="return-date" class="inp-style" type="date" name="" value="">
                 </div>
             </div>
             <div class="inputs">
@@ -121,16 +121,16 @@
                         <th>To</th>
                     </tr>
                     <tr>
-                        <td>Dhaka</td>
-                        <td>Chittagone</td>
+                        <td id="journeyFrom"></td>
+                        <td id="journeyTo"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Departure date</th>
-                        <td colspan="2">06/02/2021</td>
+                        <td id="departureDate" colspan="2"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Return date</th>
-                        <td colspan="2">08/02/2021</td>
+                        <td id="returnDate" colspan="2"></td>
                     </tr>
                     <tr class="table-active">
                         <th colspan="4">Ticket details</th>
@@ -192,6 +192,12 @@
         function calculateTotal(){
             const firstClass = getInputValue('first');
             const economyClass = getInputValue('economy');
+
+            document.getElementById('journeyFrom').innerText =  document.getElementById('journey-from').value;
+            document.getElementById('journeyTo').innerText =  document.getElementById('journey-to').value;
+
+            document.getElementById('departureDate').innerText =  document.getElementById('departure-date').value;
+            document.getElementById('returnDate').innerText =  document.getElementById('return-date').value;
 
             document.getElementById('first-class').innerText = firstClass;
             document.getElementById('economy-class').innerText = economyClass;
