@@ -163,11 +163,10 @@
                         <td id="ticket-grand-total">$00</td>
                     </tr>
                 </table>
-
                 <button id="confirm-btn" class="btn btn-primary btn-lg btn-block">Confirm</button>
             </div>
         </div>
-        
+
     </main>
 
     <script>
@@ -227,8 +226,23 @@
         })
 
         const confirmBtn = document.getElementById('confirm-btn').addEventListener('click', function(){
-            const confirmArea = document.getElementById("confirm-area");
-            confirmArea.style.display = "none";
+            const firstClass = getInputValue('first');
+            const economyClass = getInputValue('economy');
+
+            if(firstClass == 0 && economyClass == 0){
+                alert("Please purchase at least one ticket");
+                const bookingContent = document.getElementById("booking-content");
+                bookingContent.style.display = "block";
+                const bookingForm = document.getElementById("booking-form");
+                bookingForm.style.display = "block";
+
+                const confirmArea = document.getElementById("confirm-area");
+                confirmArea.style.display = "none";
+            }
+            else{
+                const confirmArea = document.getElementById("confirm-area"); 
+                confirmArea.style.display = "none";
+            }
         })
     </script>
 </body>
