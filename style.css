@@ -145,3 +145,33 @@ nav ul li a:hover, a.active{
 .ticket{
     text-align: center;
 }
+
+.thanks-message{
+    width: 350px;
+    height: 400px;
+    color: black;
+    background-color: ghostwhite;
+    box-shadow: 5px 5px 10px gray;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 100px;
+    margin-left: 450px;
+    display: none;
+}
+
+.thanks-message img{
+    width: 150px;
+    height: 200px;
+    margin-left: 80px;
+}
+
+.thanks-message p{
+    font-size: 20px;
+    text-align: center;
+}
+
+.thanks-message button{
+    width: 90px;
+    margin-top: 40px;
+    margin-left: 110px;
+}

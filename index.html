@@ -166,7 +166,12 @@
                 <button id="confirm-btn" class="btn btn-primary btn-lg btn-block">Confirm</button>
             </div>
         </div>
-
+        <div id="message-area" class="thanks-message">
+            <img src="images/thanks.png" alt="thanks">
+            <p>Thanks for purchase ticket from us!</p>
+            <p>Happy Journey!</p>
+            <button id="ok-btn" class="btn btn-primary">OK</button>
+        </div>
     </main>
 
     <script>
@@ -242,7 +247,21 @@
             else{
                 const confirmArea = document.getElementById("confirm-area"); 
                 confirmArea.style.display = "none";
+                const messageArea = document.getElementById("message-area"); 
+                messageArea.style.display = "block";
             }
+        })
+
+        document.getElementById("ok-btn").addEventListener('click', function(){
+            const bookingContent = document.getElementById("booking-content");
+            bookingContent.style.display = "block";
+            const bookingForm = document.getElementById("booking-form");
+            bookingForm.style.display = "block";
+
+            const confirmArea = document.getElementById("confirm-area");
+            confirmArea.style.display = "none";
+            const messageArea = document.getElementById("message-area"); 
+            messageArea.style.display = "none";
         })
     </script>
 </body>
