@@ -29,16 +29,14 @@
 
     <!--Booking Section-->
     <main class="main-content container">
-
-        <div class="booking-content">
+        <div id="booking-content" class="booking-content">
             <h1>Mega City Bus</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book.</p>
         </div>
 
-
-        <div class="booking-form">
+        <div id="booking-form" class="booking-form">
             <h3>Explore By Bus</h3>
 
             <div class="inputs">
@@ -47,8 +45,8 @@
                         <input class="inp-style" type="text" name="" placeholder="Dhaka">
                 </div>
                 <div class="input-group">
-                    <label" for="">From</label>
-                        <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                    <label" for="">To</label>
+                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
                 </div>
             </div>
 
@@ -109,8 +107,67 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="booking-btn" class="btn-style">Book Now</button>
         </div>
+
+        <!-- confirmation section -->
+        <div id="confirm-area" class="confirm-message">
+            <div class="confirm-card">
+                <h2>Ticket Information</h2>
+                <table class="table ticket">
+                    <tr>
+                        <th colspan="2" rowspan="2">Your selected road</th>
+                        <th>From</th>
+                        <th>To</th>
+                    </tr>
+                    <tr>
+                        <td>Dhaka</td>
+                        <td>Chittagone</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Departure date</th>
+                        <td colspan="2">06/02/2021</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Return date</th>
+                        <td colspan="2">08/02/2021</td>
+                    </tr>
+                    <tr class="table-active">
+                        <th colspan="4">Ticket details</th>
+                    </tr>
+                    <tr>
+                        <th>First class</th>
+                        <th>Amount</th>
+                        <th>Economy class</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td id="first-class">0</td>
+                        <td id="firstClass-amount">$00</td>
+                        <td id="economy-class">0</td>
+                        <td id="economyClass-amount">$00</td>
+                    </tr>
+                    <tr class="table-active">
+                        <th colspan="4">Payable Amount</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Sub-total</th>
+                        <td id="ticket-total">$00</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3">VAT</th>
+                        <td id="ticket-vat">$0</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Grand-total</th>
+                        <td id="ticket-grand-total">$00</td>
+                    </tr>
+                </table>
+
+                <button id="confirm-btn" class="btn btn-primary btn-lg btn-block">Confirm</button>
+            </div>
+        </div>
+        
     </main>
 
     <script>
@@ -131,15 +188,25 @@
         function calculateTotal(){
             const firstClass = getInputValue('first');
             const economyClass = getInputValue('economy');
+
+            document.getElementById('first-class').innerText = firstClass;
+            document.getElementById('economy-class').innerText = economyClass;
+
+            document.getElementById('firstClass-amount').innerText = '$' + firstClass * 150;
+            document.getElementById('economyClass-amount').innerText = '$' + economyClass * 100;
             
-            const subtotal = firstClass * 150 + economyClass * 100;
-            document.getElementById('sub-total').innerText = '$' + subtotal;
+            const subTotal = firstClass * 150 + economyClass * 100;
+            document.getElementById('sub-total').innerText = '$' + subTotal;
+            document.getElementById('ticket-total').innerText = '$' + subTotal;
+            
 
-            const vat = Math.round(subtotal * 0.1);
+            const vat = Math.round(subTotal * 0.1);
             document.getElementById('vat').innerText = '$' + vat;
+            document.getElementById('ticket-vat').innerText = '$' + vat;
 
-            const totalAmount = subtotal + vat;
+            const totalAmount = subTotal + vat;
             document.getElementById('total-amount').innerText = '$' + totalAmount;
+            document.getElementById('ticket-grand-total').innerText = '$' + totalAmount;
         }
 
         function getInputValue(ticketClass){
@@ -147,6 +214,22 @@
             const ticketCount = parseInt(ticketInput.value);
             return ticketCount;
         }
+
+        const bookingBtn = document.getElementById("booking-btn");
+        bookingBtn.addEventListener('click', function(){
+            const bookingContent = document.getElementById("booking-content");
+            bookingContent.style.display = "none";
+            const bookingForm = document.getElementById("booking-form");
+            bookingForm.style.display = "none";
+
+            const confirmArea = document.getElementById("confirm-area");
+            confirmArea.style.display = "block";
+        })
+
+        const confirmBtn = document.getElementById('confirm-btn').addEventListener('click', function(){
+            const confirmArea = document.getElementById("confirm-area");
+            confirmArea.style.display = "none";
+        })
     </script>
 </body>
 
